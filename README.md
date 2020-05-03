@@ -4,18 +4,18 @@ C++ smart pointer-like classes for Arduino which can't use standard smart pointe
 
 ## Note
 
-jArxSmartPtr`j is C++ smart pointer-*like* classes for Arduino.
+`ArxSmartPtr` is C++ smart pointer-__like__ classes for Arduino.
 All of the functions is not supported currently.
 
 
 ## Supported Boards
 
-This library is enabled only if you use following architecture.
+This library is currently enabled only if you use following architecture.
 Please use C++ Standard Template Library for other boards.
 
-- AVR
-- MEGAAVR
-- SAMD
+- AVR (Uno, Nano, Mega, etc.)
+- MEGAAVR (Uno WiFi, Nano Ecery, etc.)
+- SAMD (Zero, MKR, M0, etc.)
 - SPRESENSE
 
 
@@ -45,6 +45,19 @@ Please see example for more information.
 // Base::Destructor 4
 ```
 
+## APIs
+
+``` C++
+T* get() const
+long use_count() const
+explicit operator bool() const
+reference operator*() const
+T* operator->() const
+
+// just an alias of shared_ptr<T>(new T())
+template<typename T, typename... Args>
+inline shared_ptr<T> make_shared(Args&&... args)
+```
 
 ## Roadmap
 
