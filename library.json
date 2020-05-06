@@ -1,7 +1,7 @@
 {
     "name": "ArxSmartPtr",
     "keywords": "smart_ptr, shared_ptr, stl",
-    "description": "C++ smart pointer-like classes for Arduino which can't use standard smart pointers",
+    "description": "C++ smart pointer-like classes for Arduino which cannot use standard smart pointers",
     "repository":
     {
         "type": "git",

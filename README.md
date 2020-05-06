@@ -7,7 +7,7 @@ C++ smart pointer-like classes for Arduino which can't use standard smart pointe
 
 `ArxSmartPtr` is C++ smart pointer-__like__ classes for Arduino.
 All of the functions is not supported currently.
-Almost all functions are imported and simplified from [Boost.SmartPtr](https://github.com/boostorg/smart_ptr).
+Almost all functions are imported and simplified based on [Boost.SmartPtr](https://github.com/boostorg/smart_ptr).
 
 
 ## Supported SmartPtr
