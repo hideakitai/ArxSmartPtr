@@ -56,32 +56,6 @@ namespace arx {
             b = move(t);
         }
 
-
-
-
-
-        // pointer constructor helper
-
-// template< class T, class Y > inline void sp_pointer_construct( boost::shared_ptr< T > * ppx, Y * p, boost::detail::shared_count & pn )
-// {
-//     boost::detail::shared_count( p ).swap( pn );
-//     boost::detail::sp_enable_shared_from_this( ppx, p, p );
-// }
-
-// #if !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION )
-
-// template< class T, class Y > inline void sp_pointer_construct( boost::shared_ptr< T[] > * /*ppx*/, Y * p, boost::detail::shared_count & pn )
-// {
-//     sp_assert_convertible< Y[], T[] >();
-//     boost::detail::shared_count( p, boost::checked_array_deleter< T >() ).swap( pn );
-// }
-
-// template< class T, std::size_t N, class Y > inline void sp_pointer_construct( boost::shared_ptr< T[N] > * /*ppx*/, Y * p, boost::detail::shared_count & pn )
-// {
-//     sp_assert_convertible< Y[N], T[N] >();
-//     boost::detail::shared_count( p, boost::checked_array_deleter< T >() ).swap( pn );
-// }
-
     }
 
     template<class T> class shared_ptr
@@ -248,7 +222,6 @@ namespace arx {
 
         void swap(shared_ptr& other)
         {
-            // std::swap(px, other.px);
             detail::swap(px, other.px);
             pn.swap(other.pn);
         }
