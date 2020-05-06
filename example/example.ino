@@ -30,6 +30,25 @@ struct Derived : public Base
     }
 };
 
+class Test
+{
+    arx::shared_ptr<Derived> p;
+
+public:
+    Test(int i) : p(arx::make_shared<Derived>(i))
+    {
+        Serial.println("Test Constructor");
+        // Serial.println(*(p.get()));
+    }
+    ~Test()
+    {
+        Serial.println("Test Destructor");
+    }
+
+    arx::shared_ptr<Derived> getPtr() const { return p; }
+    long getCount() const { return p.use_count(); }
+
+};
 
 void setup()
 {
@@ -108,6 +127,36 @@ void setup()
     // end
     // Base::Destructor 8
     // Base::Destructor 7
+
+    Serial.println("===============================");
+    {
+        Serial.println("start");
+        Test t(10);
+        {
+            auto p = t.getPtr();
+            Serial.print("p count = ");
+            Serial.println(p.use_count());
+            Serial.print("t count = ");
+            Serial.println(t.getCount());
+            Serial.println("p deleted");
+        }
+        Serial.print("t count = ");
+        Serial.println(t.getCount());
+
+        Serial.println("end");
+    }
+    // start
+    // Base::Constructor 10
+    // Derived::Constructor 10
+    // Test Constructor
+    // p count = 2
+    // t count = 2
+    // p deleted
+    // t count = 1
+    // end
+    // Test Destructor
+    // Derived::Destructor 10
+    // Base::Destructor 10
 }
 
 void loop()
