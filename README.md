@@ -2,10 +2,25 @@
 
 C++ smart pointer-like classes for Arduino which can't use standard smart pointers
 
+
 ## Note
 
 `ArxSmartPtr` is C++ smart pointer-__like__ classes for Arduino.
 All of the functions is not supported currently.
+Almost all functions are imported and simplified from [Boost.SmartPtr](https://github.com/boostorg/smart_ptr).
+
+
+## Supported SmartPtr
+
+- `shared_ptr`
+
+
+### Limitations
+
+- Custom Deleter cannot be used
+- Custom Allocater cannot be used
+- `make_shared` is just an alias for constructor
+- namespace `arx` is used instead of `std`
 
 
 ## Supported Boards
@@ -43,20 +58,6 @@ Please see example for more information.
 // end
 // Base::Destructor 5
 // Base::Destructor 4
-```
-
-## APIs
-
-``` C++
-T* get() const
-long use_count() const
-explicit operator bool() const
-reference operator*() const
-T* operator->() const
-
-// just an alias of shared_ptr<T>(new T())
-template<typename T, typename... Args>
-inline shared_ptr<T> make_shared(Args&&... args)
 ```
 
 ## Roadmap
