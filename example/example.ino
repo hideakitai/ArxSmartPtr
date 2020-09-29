@@ -32,10 +32,10 @@ struct Derived : public Base
 
 class Test
 {
-    arx::shared_ptr<Derived> p;
+    std::shared_ptr<Derived> p;
 
 public:
-    Test(int i) : p(arx::make_shared<Derived>(i))
+    Test(int i) : p(std::make_shared<Derived>(i))
     {
         Serial.println("Test Constructor");
         // Serial.println(*(p.get()));
@@ -45,7 +45,7 @@ public:
         Serial.println("Test Destructor");
     }
 
-    arx::shared_ptr<Derived> getPtr() const { return p; }
+    std::shared_ptr<Derived> getPtr() const { return p; }
     long getCount() const { return p.use_count(); }
 
 };
@@ -57,25 +57,25 @@ void setup()
 
     Serial.println("===============================");
     {
-        arx::shared_ptr<Base> t(new Base(1));
+        std::shared_ptr<Base> t(new Base(1));
     }
     // Base::Constructor 1
     // Base::Destructor 1
 
     Serial.println("===============================");
     {
-        arx::shared_ptr<void> t(new Base(2));
+        std::shared_ptr<void> t(new Base(2));
     }
     // Base::Constructor 2
     // Base::Destructor 2
 
     Serial.println("===============================");
     {
-        arx::shared_ptr<Derived> a(new Derived(3));
+        std::shared_ptr<Derived> a(new Derived(3));
         Serial.print("use_count = "); Serial.println(a.use_count());
-        arx::shared_ptr<Base> b = a;
+        std::shared_ptr<Base> b = a;
         Serial.print("use_count = "); Serial.println(a.use_count());
-        arx::shared_ptr<void> c = a;
+        std::shared_ptr<void> c = a;
         Serial.print("use_count = "); Serial.println(a.use_count());
     }
     // Base::Constructor 3
@@ -89,11 +89,11 @@ void setup()
     Serial.println("===============================");
     {
         Serial.println("start");
-        arx::shared_ptr<Base> t1(new Base(4));
-        arx::shared_ptr<Base> t2;
+        std::shared_ptr<Base> t1(new Base(4));
+        std::shared_ptr<Base> t2;
         {
-            arx::shared_ptr<Base> t3(new Base(5));
-            arx::shared_ptr<Base> t4(new Base(6));
+            std::shared_ptr<Base> t3(new Base(5));
+            std::shared_ptr<Base> t4(new Base(6));
             t2 = t3;
         }
         Serial.println("end");
@@ -110,11 +110,11 @@ void setup()
     Serial.println("===============================");
     {
         Serial.println("start");
-        arx::shared_ptr<Base> t1 = arx::make_shared<Base>(7);
-        arx::shared_ptr<Base> t2;
+        std::shared_ptr<Base> t1 = std::make_shared<Base>(7);
+        std::shared_ptr<Base> t2;
         {
-            arx::shared_ptr<Base> t3 = arx::make_shared<Base>(8);
-            arx::shared_ptr<Base> t4 = arx::make_shared<Base>(9);
+            std::shared_ptr<Base> t3 = std::make_shared<Base>(8);
+            std::shared_ptr<Base> t4 = std::make_shared<Base>(9);
 			t2 = t3;
         }
         Serial.println("end");
